@@ -1,2 +1,0 @@
-# WebProgramming
-WEB TERM PROJECT
