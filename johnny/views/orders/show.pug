@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title= order.order
+
+    .order.show
+      include _order
+
+      .buttons
+        if currentUser && order.userID.id == currentUser.id
+          | 
+          a.btn.btn-outline-secondary(href=`/orders/${order.id}/edit`) Edit
+          | 
+          a.btn.btn-outline-danger.need-confirm-btn(href=`/orders/${order.id}?_method=delete`) Delete

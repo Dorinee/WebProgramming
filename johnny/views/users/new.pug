@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title Signup
+    form(action='/users', method='POST')
+      .form-group
+        label(for='name') name
+        input.form-control(type='text', id='name', name='name', placeholder='이름을 입력하세요')
+      .form-group
+        label(for='type') code
+        input.form-control(type='text', id='type', name='type', placeholder='관리자 -> adimin/가이드 -> guide/일반고객 -> customer')
+      .form-group
+        label(for='email') email address
+        input.form-control(type='email', id='email', name='email', placeholder='이메일 주소를 입력하세요')
+      .form-group
+        label(for='password') password
+        input.form-control(type='password', id='password', name='password', placeholder='Password')
+      .form-group
+        label(for='password_confirmation') password confirmation
+        input.form-control(type='password', id='password_confirmation', name='password_confirmation', placeholder='Password')
+      
+      a.btn.btn-outline-secondary(href='/users') User List
+      
+      button.btn.btn-primary(type='submit') Signup

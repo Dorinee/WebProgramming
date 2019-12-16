@@ -1,0 +1,28 @@
+.header.clearfix
+  nav.navbar.navbar-expand-md.navbar-dark.bg-light.fixed-top
+    .container
+      a.navbar-brand(href="/") WEB Programming Tour Service
+      button.navbar-toggler(type="button", data-target="#navbarsExampleDefault")
+        span.navbar-toggler-icon
+
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href="/items") Tour
+          
+          if (!currentUser) 
+            li.nav-item
+              a.nav-link(href='/signin') Log in
+            li.nav-item
+              a.nav-link(href='/users/new') Sign up
+          else
+            li.nav-item
+              a.nav-link(href='/orders/new') Tour reserve
+            li.nav-item
+              a.nav-link(href=`/users/${currentUser._id}`) User page
+            li.nav-item
+              a.nav-link(href='/users') Admin Page
+            li.nav-item
+              a.nav-link(href='/signout') Signout
+        
+          

@@ -1,0 +1,23 @@
+extends ../layout
+include ../includes/_paginate
+
+block content
+  .container
+    form.form-inline.search-input-group(action='/orders', method = 'GET')
+     
+    h3.main-title
+      |Reserve tour
+      if orders.total > 0
+        .small Total #{orders.total} orders
+
+    if orders.total <= 0
+      .alert.alert-info No orders available yet
+    else
+      .orders
+        each order in orders.docs
+          .order
+            a.item(href=`/orders/${order.id}`)= order.item
+            include _order
+      
+    hr
+    a.btn.btn-primary(href='/orders/new') Upload Tour orders

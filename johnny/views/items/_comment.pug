@@ -1,0 +1,13 @@
+.comment.card
+  .card-body
+    .content= comment.content
+    
+  .row.card-body
+    .col-sm
+    .col-sm.text-right
+      .userID
+        | commented on #{moment(comment.createdAt).format('YYYY-MM-DD')}
+        if comment.userID
+          | 
+          | by #[a(href=`/users/${comment.userID.id}`)= comment.userID.name]
+          | Stars :  #[a(href=`/users/${comment.userID.id}`)= comment.userID.starScore]

@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title 프로필 수정하기
+    form(action=`/users/${user._id}?_method=PUT`, method='POST')
+      .form-group
+        label(for='name') name
+        input.form-control(type='text', id='name', name='name', placeholder='Your name', value=user.name)
+      .form-group
+        label(for='type') type code
+        input.form-control(type='text', id='type', name='type', placeholder='type code', value=user.type)
+      .form-group
+        label(for='email') email address
+        input.form-control(type='email', id='email', name='email', placeholder='Email', value=user.email)
+      .form-group
+        label(for='current_password') current password
+        input.form-control(type='password', id='current_password', name='current_password', placeholder='Current Password')
+      .form-group
+        label(for='password') new password
+        input.form-control(type='password', id='password', name='password', placeholder='Password')
+      .form-group
+        label(for='password_confirmation') new password confirmation
+        input.form-control(type='password', id='password_confirmation', name='password_confirmation', placeholder='Password Confirmation')
+      
+      a.btn.btn-outline-secondary(href='javascript:window.history.back();') Back 
+      | 
+      button.btn.btn-primary(type='submit') profile update

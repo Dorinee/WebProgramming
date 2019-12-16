@@ -1,0 +1,10 @@
+.content= order.content
+
+.row 
+  .col-sm
+    .userID
+      | commented on #{moment(order.createdAt).format('YYYY-MM-DD')}
+      if order.userID
+        | 
+        | by #[a(href=`/users/${order.userID.id}`)= order.userID.name] 
+

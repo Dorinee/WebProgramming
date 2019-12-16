@@ -1,0 +1,25 @@
+extends ../layout
+include ../includes/_paginate
+
+block content
+  .container
+    form.form-inline.search-input-group(action='/items', method = 'GET')
+      i.fa.fa-serch
+      input.form-control(type='text', size = '30',display='center',name='term',placeholder='search it', aria-label='Search', value=term)
+      
+    h3.main-title
+      |Tour Items
+      if items.total > 0
+        .small Total #{items.total} item(s)
+
+    if items.total <= 0
+      .alert.alert-info No items available yet
+    else
+      .items
+        each item in items.docs
+          .item
+            a.title(href=`/items/${item.id}`)= item.title
+            include _item
+      +paginate(items, '/items', query)
+    hr
+    a.btn.btn-primary(href='/items/new') Upload Tour Items

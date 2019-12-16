@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title= item.title
+
+    .item.show
+    include _item
+
+      .buttons
+        button.btn.btn-primary #[i.fa.fa-thumbs-up] Like
+        if currentUser && item.userID.id == currentUser.id
+          | 
+          a.btn.btn-outline-secondary(href=`/items/${item.id}/edit`) Edit
+          | 
+          a.btn.btn-outline-danger.need-confirm-btn(href=`/items/${item.id}?_method=delete`) Delete
+      
+    if item.numComments > 0
+      hr
+      h3 #{item.numComments} comment(s) 
+    
+    .comments.show
+      each comment in comments
+        include _comment
+
+    form(action=`/items/${item.id}/comments`, method='POST')
+      .form-group
+        label(for='comment') Your comment
+        textarea.form-control(name="content", rows="5")
+      .form-group
+        label(for='starScore') starscore
+        input.form-control(name = "starScore", rows="1")
+      
+      button.btn.btn-primary(type="submit") Post Your comment
+

@@ -1,0 +1,24 @@
+.content=item.place
+br
+.content=item.title
+br
+.content=item.price
+br
+.content=item.content
+br
+.content=item.course
+
+.row
+  .col-sm
+    .numbers.
+      #[span.number.num-votes= item.numLikes] likes,
+      #[span.number.num-answers= item.numComments] comments,
+      
+  .col-sm
+    .userID
+      | commented on #{moment(item.createdAt).format('YYYY-MM-DD')}
+      if item.userID
+        | 
+        | by #[a(href=`/users/${item.userID.id}`)= item.userID.name] 
+     
+

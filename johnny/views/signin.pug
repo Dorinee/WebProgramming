@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  .container
+    .clearfix
+      form.form-signin(action='/signin', method='POST')
+        h3.form-signin-heading Log in
+
+        a.btn.btn-dark.btn-block(href='/auth/facebook') 
+          i.fa.fa-facebook.fa-lg
+          | &nbsp;
+          | Log in with facebook
+  
+        label.sr-only(for='email') Email
+        input(
+          type='email', id='email', name='email', class='form-control', 
+          placeholder='email', required, autofocus
+        )
+
+        label.sr-only(for='password') Password
+        input(
+          type='password', id='password', name='password', class='form-control', 
+          placeholder='password', required, autofocus
+        )
+
+        .checkbox
+          label 
+            input(type="checkbox", value="remember-me")
+            | 
+            | Log in maintaining
+            | &nbsp;
+            a(href='/reset-password')  Password Find
+
+        button.btn.btn-primary.btn-block(type='submit') Log in with Email
+
+        hr
+        div.sub 
+          a(href='/users/new') Signup
+          
+
